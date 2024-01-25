@@ -5,64 +5,68 @@ import java.util.Scanner;
 public class Practice1 {
     public static void main(String[] args) {
         //nacti string od uzivatele
-        //String je heslo
-        //nazev musi byt dlouhy aspon 8 znaku
-        Scanner sc = new Scanner(System.in);
-//        System.out.println("Zadej mozne heslo:");
-//        String password = sc.nextLine();
-//        if (password.length() < 8){
-//            System.out.println("Neplatne");
-//        } else {
-//            System.out.println(password + " je OK");
-//        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zadej string: ");
+        String input = "whatever";
+        //je dlouhy alespon 8 znaku
+        if (input.length() > 7){
+            System.out.println("Input OK");
+        }
+        //overi rodne cislo
+        //overi = znak '/'
+        //pocet znaku = 11
+        //vypis, zda se jedna o muze/zenu
+        String rc = "005209/1245";
+        if (rc.charAt(6) == '/'){
+            System.out.println("/ je OK");
+            if (rc.length() == 11){
+                System.out.println("Delka OK");
+                if (rc.charAt(2) == '0' || rc.charAt(2) == '1'){
+                    System.out.println("Jedna se o muže");
+                } else {
+                    System.out.println("Jedna se o ženu");
+                }
+            }
+        }
+        //Pripravit string heslo
+        //Overit, zda uzivatel heslo uhodl
+        String password = "secret";
+        System.out.println("Zadej heslo:");
+        input = scanner.nextLine();
+        //porovnava, ze jsou stejne
+        if (input.equals(password)){
+            System.out.println("Spravne zadano!");
+        } else {
+            System.out.println(":(");
+        }
 
-//        //heslo musi odpovidat 'secret'
-//        //vypiste, zda uzivatel uhadl
-//        System.out.println("uhadni heslo:");
-//        String correctPassword = "secret";
-//        password = sc.nextLine();
-//        if (password.equals(correctPassword)){
-//            System.out.println("Spravne");
-//        } else {
-//            System.out.println("Spatne");
-//        }
-
-//        //uzivatel zada rodne cislo
-//        //zjisti, ze je spravne
-//        //zjisti, zda se jedna o muze/zenu
-//        System.out.println("zadej rodne cislo");
-//        String rc = sc.nextLine();
-//        //je spravne = lomitko,
-//        // a zaroven 123456/7899
-//        if (rc.charAt(6) == '/'){
-//            System.out.println("RC ma na spravne pozici /");
-//            if (rc.length() == 11){
-//                System.out.println("RC ma spravnou delku");
-//                if (rc.charAt(2) == '0' || rc.charAt(2) == '1'){
-//                    System.out.println("Jedna se o muze");
-//                } else if (rc.charAt(2) == '5' || rc.charAt(2) == '6'){
-//                    System.out.println("Jedna se o zenu");
-//                }
-//            }
-//        }
-
-        //Pole stringu:
-        String[] passwords = {"ananas", "vodka", "rohlik"};
-        System.out.println("Zkus uhadnout heslo:");
-        String guess = sc.nextLine();
+        ///hledani v poli Strings
+        String[] passwords = {"bagr", "toi toi", "mamma mia!"};
+        System.out.println("Zadej heslo: ");
+        input = scanner.nextLine();
         for (int i = 0; i < passwords.length; i++) {
-            if (guess.equals(passwords[i])){
-                System.out.println("Uhadl!");
+            if (passwords[i].equals(input)){
+                System.out.println("Zadal jsi spravne heslo");
                 break;
             }
         }
 
-        //vypis z pole vsechny Honzy
-        String[] names = {"Ctirad Novák", "Oldřich Starý", "Jan Franta", "Jan Boháč", "František karel"};
-        for (int i = 0; i < names.length; i++) {
-            if (names[i].contains("Jan ")){
-                System.out.println(names[i]);
-            }
-        }
+        //prevod textu -> velka mala pismena
+        //Java je case sensitive
+        //uzivatel zada text, vypis je velkymi pismeny
+        System.out.println("Zadej text: ");
+        input = scanner.nextLine();
+        String upperText = input.toUpperCase();
+        System.out.println(input + " byl preveden na " + upperText);
+
+
+        //porovnejte, zda jsou dve slova stejna bez ohledu na velikost pismen
+        //hello -> hElLo budou stejne
+        String first = "hello";
+        String second = "hELlO";
+        System.out.println("Jsou stejne? " + first.equals(second));
+        System.out.println("Jsou stejne? " + first.equalsIgnoreCase(second));
+        //Alternativne (a zbytecne slozite)
+        boolean same = first.toUpperCase().equals(second.toUpperCase());
     }
 }
