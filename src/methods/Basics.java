@@ -12,15 +12,32 @@ public class Basics {
         System.out.println("Ahoj " + name);
     }
 
-    static void sum(int a, int b){
+    private static void sum(int a, int b){
         int cislo = a+b;
         System.out.println( a + " + " + b + " = ");
         System.out.println(cislo);
     }
 
-    static int multiplication(int a, int b){
+    public static int multiplication(int a, int b){
         int result = a * b;
         return result;
+    }
+
+    static void printEven(int n){
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 1){
+                continue;
+            }
+            System.out.println(i);
+        }
+    }
+
+    static boolean isEven(int number){
+        if (number % 2 == 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void main(String[] args) {
@@ -33,6 +50,8 @@ public class Basics {
         multiplication(5,3); // spocita, ale nic neudela
         int multiplicationResult = multiplication(5,3);
         System.out.println(multiplicationResult);
+
+
     }
 
     //nebo tady
