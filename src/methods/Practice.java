@@ -45,6 +45,9 @@ public class Practice {
         System.out.println("Area is : " + rectangleArea);
         int randomNum = random(-10, 10);
         int anotherRandomNum = random(20, 100);
+        //kdyby tam nebylo static
+//        Practice p = new Practice();
+//        p.randomArray(10, -100, 100);
         System.out.println(Arrays.toString(randomArray(10, -100, 100)));
         timeConvert(90);
         timeConvert(180);
