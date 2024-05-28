@@ -14,38 +14,62 @@ public class Maze {
         this.player = player;
     }
 
-    void  printMaze(){
+    void printMaze() {
         for (int i = 0; i < mazeArray.length; i++) {
             for (int j = 0; j < mazeArray[i].length; j++) {
-                System.out.print(getCharacter(mazeArray[i][j]));
+                if (i == player.x && j == player.y) {
+                    System.out.print(playerIcon);
+                } else {
+                    System.out.print(getCharacter(mazeArray[i][j]));
+                }
             }
             System.out.println();
         }
     }
 
-    char getCharacter(int mazeValue){
-        switch (mazeValue){
-            case 0: return freeSpace;
-            case 1: return wall;
-            case 2: return playerIcon;
-            case 3: return treasure;
+    char getCharacter(int mazeValue) {
+        switch (mazeValue) {
+            case 0:
+                return freeSpace;
+            case 1:
+                return wall;
+            case 3:
+                return treasure;
         }
         return 'X';
+    }
+
+    void game() {
+        printMaze();
+        while (mazeArray[player.x][player.y] != 3) {
+            player.readMove();
+            printMaze();
+            if (hitWall()){
+                System.out.println("Narazil jsi do zdi, hra je ukoncena");
+                return;
+            }
+        }
+        System.out.println("Nasel jsi poklad, hra je ukoncena..");
+    }
+
+    boolean hitWall(){
+        return mazeArray[player.x][player.y] == 1;
     }
 
 
     public static void main(String[] args) {
         int[][] mazeArray = {
-                {1,1,1,1,1,1,1},
-                {1,0,0,0,0,0,1},
-                {1,0,1,1,1,0,1},
-                {1,0,1,0,0,0,1},
-                {1,2,1,3,1,0,1},
-                {1,1,1,1,1,1,1}
+                {1, 1, 1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 1},
+                {1, 0, 1, 1, 1, 0, 1},
+                {1, 0, 1, 0, 0, 0, 1},
+                {1, 0, 1, 3, 1, 0, 1},
+                {1, 1, 1, 1, 1, 1, 1}
         };
-        Player p = new Player("John");
+        Player p = new Player("John", 4, 1);
 
         Maze m = new Maze(mazeArray, 'X', 'O', ' ', '+', p);
-        m.printMaze();
+//        m.printMaze();
+        m.game();
     }
 }
