@@ -10,7 +10,7 @@ public class Player {
         this.money = money;
     }
 
-    public void pickCard(){
+    public void pickCard(){//vytahne kartu, vetsi pravdepodobnost na karty == 10
         int cardPicked = (int)(Math.random() * 13 + 1);
         if (cardPicked >= 10){
             cardPicked = 10;
